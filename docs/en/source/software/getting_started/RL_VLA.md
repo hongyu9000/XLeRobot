@@ -3,7 +3,7 @@
 Single arm VLA policy implementation on XLeRobot:
 
 <video width="100%" controls>
-  <source src="https://github.com/user-attachments/assets/b912fe60-76fe-4cbe-8951-565a5e327277" type="video/mp4">
+  <source src="https://github.com/user-attachments/assets/71c0fdd6-83d7-45dc-8225-60ef8ba741a0" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
