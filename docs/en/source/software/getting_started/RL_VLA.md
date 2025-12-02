@@ -1,20 +1,14 @@
-## Reinforcenment Learning (RL)
-
-You can try [lerobot-sim2real (by Stone Tao)](https://github.com/StoneT2000/lerobot-sim2real) with Maniskill, or [huggingface official tutorial on HIL-SERL](https://huggingface.co/docs/lerobot/hilserl) on single SO101 arm first. The offcial code for complete XLeRobot RL is coming soon. The demo below shows the implementation of [lerobot-sim2real](https://github.com/StoneT2000/lerobot-sim2real), with minor changes to the camera direction and sim-object distribution. 
-
+## VLA and RL
 
 <video width="100%" controls>
-  <source src="https://vector-wangel.github.io/XLeRobot-assets/videos/Real_demos/sim2real_2.mp4" type="video/mp4">
+  <source src="" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+_Single arm VLA policy implementation on XLeRobot._
 
-## Vision-Language-Action (VLA)
+# Vision-Language-Action (VLA) Training for XLeRobot
 
-You can follow [huggingface official VLA tutorial](https://huggingface.co/docs/lerobot/smolvla) on single SO101 arm first.  
-
-# VLA Training for XLeRobot
-
-This tutorial will guide you through the process of training a Vision-Language-Action (VLA) model to control your XLeRobot arms autonomously. If you have any questions, feel free to open an issue.
+This tutorial will guide you through the process of training a Vision-Language-Action (VLA) model to control your XLeRobot arms autonomously. As control devices we will use VR and leader arm. If you want us to add more control devices (as xbox controller or keyboard) feel free to open an issue.
 
 ## What You'll Learn
 
@@ -28,20 +22,19 @@ By following these steps, you'll be able to train your XLeRobot to autonomously 
 
 ## 1. Hardware Setup and Check
 
-### 1.1 Turn the head camera on apropriate angle
+### 1.1 Turn the head camera to an appropriate angle
 
-For both VLA dataset collection and inference you need to keep consistent head servos angles - otherwice policy will not work or performance will drop.
+For both VLA dataset collection and inference you need to keep consistent head servos angles - otherwise policy will not work or performance will drop.
 
-Also, ensure the camera fully sees arms operation field - if for example your policy takes object from table and puts in into robot basket - both table and basket need to be fully visible.
+Also, ensure the camera fully sees arms operation field - if for example your policy takes object from table and puts it into robot basket - both table and basket need to be fully visible.
 
-You can turn the camera by your hand or use utility from RoboCrew lib (especcially if you want to use your VLA policy as LLM agent tool) - this will provide you with a perfect repeatability of the camera angle:
+You can turn the camera by your hand or use utility from RoboCrew lib (especially if you want to use your VLA policy as LLM agent tool) - this will provide you with a perfect repeatability of the camera angle:
 
 ```python
-from robocrew.robots.XLeRobot.utils import turn_head_to_vla_position
 from robocrew.robots.XLeRobot.servo_controls import ServoControler
 
 servo_controler = ServoControler(left_arm_head_usb='/dev/left_arm')
-turn_head_to_vla_position(servo_controler)
+servo_controler.turn_head_to_vla_position()
 ```
 
 ### 1.2 Check Camera Status
@@ -76,11 +69,11 @@ XLeRobot has three cameras: two wrist cameras and one head camera. Make sure all
 
 ## 2.1. Record Dataset for a Single Arm Using a Leader Arm
 
-Very often the single arm will be totally enough to perform your pick-and-place task. Using single arm means using less servos and cameras then in case of entire robot, so it will be much easier for your model to learn it. If your task is simple enough to be done with one arm - let's train policy for it.
+Very often the single arm is enough to perform your pick-and-place task. Using single arm only means using less servos and cameras, so it will be much easier for your model to learn the policy. If your task is simple enough to be done with one arm - let's train policy for it.
 
-Connect to Raspberry Pi or other computer you use to record dataset a leader arm.
+Connect a leader arm to the Raspberry Pi or other computer you use to record a dataset.
 
-Following script will start recording
+Following script will start recording:
 
 ```bash
 python /your_dir/lerobot/src/lerobot/record.py \
@@ -142,7 +135,7 @@ python /your_dir/lerobot/src/lerobot/record.py \
 ---
 
 ```{note}
-Some tips for better performance:
+Some tips for a better performance:
 
 1. **Check for Dropped Frames**: Review [these examples](https://gold-column-7d2.notion.site/Some-examples-for-VLA-dataset-2a2e20e657ad8037aa09d1228a2bf4bf?pvs=73) to understand what dropped frames look like. Monitor your bandwidth and CPU usage during recording. If issues occur, optimize your system accordingly.
 
@@ -158,9 +151,9 @@ After collecting your datasets, refer to the LeRobot [training tutorial](https:/
 
 ## 4. Deploy a Model
 
-The simpliest way to test your trained model:
+The simplest way to test your trained model:
 ```
-The script is like:
+The command will look like:
 ```python
 python /your_dir/lerobot/src/lerobot/record.py \
   --robot.type=xlerobot \
@@ -172,18 +165,9 @@ python /your_dir/lerobot/src/lerobot/record.py \
   --teleop.type=xlerobot_vr
 ```
 
-Script above runs policy on your robot's Raspberry. For lightweight ACT policy it's enough, but other, more resource-consuming policies will be not running on Raspberry smoothly. 
+Script above runs policy locally on your robot's Raspberry. For lightweight ACT policy it's enough, but for other more resource-consuming policies, the Raspberry will not provide enough computation. 
 
-To run powerful policies as SmolVLA or PI0,5 we need an external computer with GPU. Follow the Lerobot [async inference guide](https://huggingface.co/docs/lerobot/async) to set up policy server on your PC, and client in the XLeRobot.
-
-```{note}
-If your policy server and robot client are in different local networks, use Ngrok to connect them.
-
-On policy machine, run:
-`ngrok tcp 8080`
-
-Then paste adress that will appear into client configuration.
-```
+To run powerful policies as SmolVLA or PI0,5 we need an external computer with GPU. Follow the Lerobot [async inference guide](https://huggingface.co/docs/lerobot/async) to set up policy server on your PC, and client on the XLeRobot. Use loopback interface (0.0.0.0) instead of localhost for your server, and provide server's local IP to the client.
 
 In most cases you'll want to use your VLA policy not by itself, but as a tool of the [LLM agent](https://xlerobot.readthedocs.io/en/latest/software/getting_started/LLM_agent.html). RoboCrew lib already provides you with async client in the tool. Before using it, remember to run policy server on the server machine:
 
@@ -192,3 +176,15 @@ python -m lerobot.async_inference.policy_server \
      --host=0.0.0.0 \
      --port=8080
 ```
+
+
+
+# Reinforcement Learning (RL)
+
+You can try [lerobot-sim2real (by Stone Tao)](https://github.com/StoneT2000/lerobot-sim2real) with Maniskill, or [huggingface official tutorial on HIL-SERL](https://huggingface.co/docs/lerobot/hilserl) on single SO101 arm first. The official code for complete XLeRobot RL is coming soon. The demo below shows the implementation of [lerobot-sim2real](https://github.com/StoneT2000/lerobot-sim2real), with minor changes to the camera direction and sim-object distribution. 
+
+
+<video width="100%" controls>
+  <source src="https://vector-wangel.github.io/XLeRobot-assets/videos/Real_demos/sim2real_2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
