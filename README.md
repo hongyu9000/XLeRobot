@@ -103,13 +103,14 @@ Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for guidance on how to get in
 **Main Contributors**
 
 - [Gaotian/Vector Wang](https://vector-wangel.github.io/)
-- Jiahao Wang ,Chunbo Pan, QiLiu, Isaac Sin, Ryan Chen: Makermods team, VLA and VR integration
+- [Jiahao Wang](https://github.com/kahowang), [Chunbo Pan](https://github.com/IIMFINE), [QiLiu](https://github.com/Lakesenberg), [Isaac Sin](https://github.com/IsaacSinn), [Ryan Chen](https://github.com/RapidCAMO): [Makermods team](https://www.makermods.ai/), VLA and VR integration
 - [Zhuoyi Lu](https://lzhuoyi.github.io/Zhuoyi_Lu.github.io/): RL sim2real deploy, teleop on real robot (Xbox, VR, Joycon)
 - Yiyang Huang: RL & VLA implementation (ongoing)
 - YCP: WebUI for remote control (ongoing)
 - [Lixing Zhang](lixingzhang.com): Hardware design improvements
 - Nicole Yue: Documentation website setup
 - Yuesong Wang: Mujoco simulation
+- 
 
 
 This is just a small brick in the pyramid, made possible by [LeRobot](https://github.com/huggingface/lerobot), [SO-100](https://github.com/TheRobotStudio/SO-ARM100), [Lekiwi](https://github.com/SIGRobotics-UIUC/LeKiwi), and [Bambot](https://github.com/timqian/bambot). Thanks to all the talented contributors behind these detailed and professional projects.
