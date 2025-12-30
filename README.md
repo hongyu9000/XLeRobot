@@ -40,7 +40,7 @@
 ---
 
 # 📰 News 
-- 2025-12-02: [Dual-wheel version released](https://github.com/Vector-Wangel/XLeRobot/blob/main/hardware/XLeRobot_0_4_0_extra.stl)! Have a more stable and accurate differential-wheel base for a cheaper price. (Default servo motor, optional scooter brushless Motor available at a similar price)
+- 2025-12-02: [Dual-wheel version released](https://xlerobot.readthedocs.io/en/latest/hardware/getting_started/assemble_2wheel.html)! Have a more stable and accurate differential-wheel base for a cheaper price. (Default servo motor, optional scooter brushless Motor available at a similar price)
   <img width="1368" height="789" alt="image" src="https://github.com/user-attachments/assets/db226bfb-dc20-407b-9854-6a394ccd8fe7" />
 
 - 2025-11-11: **[Temporary VLA tutorial](https://xlerobot.readthedocs.io/en/latest/software/getting_started/RL_VLA.html#vision-language-action-vla-training-for-xlerobot)** out. Official version out soon.
