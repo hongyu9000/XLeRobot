@@ -17,6 +17,19 @@ Regarding a lifting (height-adjustable) base, we have also explored related desi
 Going forward, we plan to collaborate with Hightorque and wowrobo to build more product-level, low-cost, open-source mobile robots based on higher-performance motors.
 
 
+Official Assembly Videos from Wowrobo:
+<iframe width="800" height="600" 
+    src="https://www.youtube.com/embed/4bXCFw57T60" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+
+<iframe width="800" height="600" 
+    src="//player.bilibili.com/player.html?bvid=BV1JpiqBfEuf&autoplay=0" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+
 ### Servo motor version
 
 Pros: 
