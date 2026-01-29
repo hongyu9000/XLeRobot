@@ -1,5 +1,17 @@
 # Simulation
 
+##### Web Mujoco simulation
+
+Play with XLeRobot instantly on web, using mujoco engine.
+
+<iframe 
+    src="https://vector-wangel.github.io/XLeRobot-Web/" 
+    width="100%" 
+    height="600px"
+    style="border: none; border-radius: 8px;"
+    allowfullscreen>
+</iframe>
+
 ##### [👋 Get Started](getting_started/index)
 
 - [A short technical blog](https://vectorwang.notion.site/Analytical-IK-for-SO101-20abb280f59380d288bcdd398ffbfab1) for analytical IK introduction.
