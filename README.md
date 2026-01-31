@@ -40,8 +40,8 @@
 ---
 
 # 📰 News 
-- 2026-1-29: Play with XLeRobot directly in browser with Mujoco: https://vector-wangel.github.io/XLeRobot-Web/
-  - <a href="https://vector-wangel.github.io/XLeRobot-Web/"><img src="https://github.com/user-attachments/assets/965de8f9-11a1-41ee-8d91-4814a8781a58" href></a>
+- 2026-1-29: Play with XLeRobot directly in browser with Mujoco and 3DGS: https://vector-wangel.github.io/XLeRobot-Web/
+  - <a href="https://vector-wangel.github.io/XLeRobot-Web/"><img src="https://github.com/user-attachments/assets/9f6faa1c-6f4e-40ea-a28d-795b0f3323d2" href></a>
 - 2025-12-02: [Dual-wheel version released](https://xlerobot.readthedocs.io/en/latest/hardware/getting_started/assemble_2wheel.html)! Have a more stable and accurate differential-wheel base for a cheaper price. (Default servo motor, optional scooter brushless Motor available at a similar price)
   <img width="1368" height="789" alt="image" src="https://github.com/user-attachments/assets/db226bfb-dc20-407b-9854-6a394ccd8fe7" />
 
