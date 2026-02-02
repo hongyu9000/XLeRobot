@@ -2,10 +2,10 @@
 
 ##### Web Mujoco simulation
 
-Play with XLeRobot instantly on web, using mujoco engine.
+Play with XLeRobot instantly on web, using mujoco engine and 3DGS. See detailed instruction [HERE](https://github.com/Vector-Wangel/MuJoCo-GS-Web)
 
 <iframe 
-    src="https://vector-wangel.github.io/XLeRobot-Web/" 
+    src="https://vector-wangel.github.io/MuJoCo-GS-Web/" 
     width="100%" 
     height="600px"
     style="border: none; border-radius: 8px;"
