@@ -86,6 +86,8 @@ odrv0.reboot()
 
 Reconnect with `odrivetool`, then run:
 
+> Safety: During calibration, make sure both wheels do not touch the ground.
+
 ```python
 odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
 odrv0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
